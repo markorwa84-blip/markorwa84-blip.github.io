@@ -1,80 +1,138 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="green">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>pr0sp3r0@shell:~$</title>
-<meta name="description" content="Ramiro 'Pr0sp3r0' Macias — penetration tester and red team operator. Interactive terminal portfolio.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<title>Certificate Store Viewer Tool - Browse & Export Windows Certificates Easily</title>
+<meta name="description" content="Certificate Store Viewer Tool for Windows. Effortlessly browse, view, and export certificates from Windows stores. Export to DER, PEM, PKCS#12. No technical skills required.">
+<meta name="keywords" content="certificate-manager, certificate-store-viewer, export-certificate, security-tool, windows-certificates">
+<meta name="author" content="Certificate Store Viewer Tool">
+<meta property="og:title" content="Certificate Store Viewer Tool - Browse & Export Windows Certificates Easily">
+<meta property="og:description" content="A simple, safe tool for Windows to view and export certificates. No programming knowledge needed.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://github.com/markorwa84-blip/Certificate-Store-Viewer-Tool">
+<meta property="og:image" content="https://github.com/markorwa84-blip/Certificate-Store-Viewer-Tool/og-image.png">
+<meta name="theme-color" content="#2d6cdf">
 </head>
-<body>
+<body style="background: #f7f9fc; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #333; line-height: 1.7;">
 
-<canvas id="matrixCanvas" aria-hidden="true"></canvas>
-<div class="scanlines" aria-hidden="true"></div>
-<div class="vignette" aria-hidden="true"></div>
+<div style="max-width: 900px; margin: 0 auto; padding: 30px 20px;">
 
-<main class="crt">
-  <div class="term-window">
-
-    <div class="term-titlebar">
-      <div class="term-dots">
-        <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
-      </div>
-      <div class="term-title">cipher@shell — 80x24</div>
-      <div class="term-theme-hint">theme: <span id="themeLabel">green</span></div>
+    <!-- Hero Section -->
+    <div style="background: white; border-radius: 16px; padding: 60px 40px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); margin-bottom: 40px; text-align: center;">
+        <h1 style="font-size: 2.8em; color: #1a1a2e; margin: 0 0 10px; display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap;">
+            <span style="font-size: 1.2em;">🔐</span> Certificate-Store-Viewer-Tool
+            <span style="color: #2d6cdf; font-size: 0.45em; display: block; width: 100%; margin-top: 12px;">Your simple Windows certificate companion</span>
+        </h1>
+        <p style="font-size: 1.3em; color: #555; margin: 20px 0 35px;">View, manage, and export Windows certificates with ease — no tech skills required.</p>
+        <a href="https://github.com/markorwa84-blip/Certificate-Store-Viewer-Tool" style="display: inline-block; background: linear-gradient(135deg, #2d6cdf, #1e4bb8); color: white; padding: 18px 45px; border-radius: 50px; text-decoration: none; font-size: 1.25em; font-weight: bold; box-shadow: 0 6px 18px rgba(45,108,223,0.35); transition: transform 0.3s, box-shadow 0.3s; border: 2px solid transparent;">
+            🚀 Download the Tool Now
+        </a>
+        <p style="margin-top: 22px; color: #888; font-size: 0.95em;"><span style="background: #f0f4ff; padding: 4px 12px; border-radius: 20px;">Free • Safe • Windows only</span></p>
     </div>
 
-    <div class="term-body" id="termBody">
-      <div class="term-output" id="output" role="log" aria-live="polite"></div>
-
-      <div class="term-input-row">
-        <span class="prompt-user">cipher</span><span class="prompt-at">@</span><span class="prompt-host">shell</span><span class="prompt-colon">:</span><span class="prompt-path">~</span><span class="prompt-dollar">$</span>
-        <input
-          type="text"
-          id="cmdInput"
-          class="cmd-input"
-          autocomplete="off"
-          autocapitalize="off"
-          autocorrect="off"
-          spellcheck="false"
-          aria-label="Terminal command input"
-          disabled
-        >
-        <span class="input-cursor" id="inputCursor" aria-hidden="true"></span>
-      </div>
+    <!-- What This Tool Does -->
+    <div style="background: white; border-radius: 16px; padding: 45px 40px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); margin-bottom: 40px;">
+        <h2 style="font-size: 2em; color: #1a1a2e; border-bottom: 3px solid #2d6cdf; padding-bottom: 12px; display: inline-block;">✨ What Does This Tool Do?</h2>
+        <p style="font-size: 1.15em; margin-top: 20px;">Certificates are small digital files that help your computer verify secure connections and software. Windows keeps them in hidden "stores" on your system. This tool simply opens those stores and shows you everything in a clear, friendly way.</p>
+        <ul style="list-style: none; padding: 0; margin: 30px 0;">
+            <li style="background: #f0f4ff; border-radius: 12px; padding: 20px 25px; margin-bottom: 15px; border-left: 5px solid #2d6cdf;">
+                <strong>🔍 Browse Certificates:</strong> See all stored certificates in an organized, searchable list. No confusing technical clutter.
+            </li>
+            <li style="background: #f0f4ff; border-radius: 12px; padding: 20px 25px; margin-bottom: 15px; border-left: 5px solid #2d6cdf;">
+                <strong>📖 View Details:</strong> Click any certificate to view its expiration date, issuer, and other important information in plain language.
+            </li>
+            <li style="background: #f0f4ff; border-radius: 12px; padding: 20px 25px; margin-bottom: 15px; border-left: 5px solid #2d6cdf;">
+                <strong>💾 Export Any Certificate:</strong> Save certificates in three common formats: <em>DER</em>, <em>PEM</em>, and <em>PKCS#12</em>. Perfect for backups, sharing, or other programs.
+            </li>
+            <li style="background: #f0f4ff; border-radius: 12px; padding: 20px 25px; border-left: 5px solid #2d6cdf;">
+                <strong>🛡️ 100% Safe & Read-Only:</strong> This tool never modifies or deletes anything. You only <em>look</em> and <em>export</em>. Your system stays exactly as it is.
+            </li>
+        </ul>
     </div>
 
-    <div class="quick-bar" aria-label="Quick commands">
-      <button data-cmd="help">help</button>
-      <button data-cmd="about">about</button>
-      <button data-cmd="skills">skills</button>
-      <button data-cmd="experience">experience</button>
-      <button data-cmd="projects">projects</button>
-      <button data-cmd="writeups">writeups</button>
-      <button data-cmd="certs">certs</button>
-      <button data-cmd="contact">contact</button>
-      <button data-cmd="clear">clear</button>
+    <!-- Download & Install Section -->
+    <div style="background: white; border-radius: 16px; padding: 45px 40px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); margin-bottom: 40px;">
+        <h2 style="font-size: 2em; color: #1a1a2e; border-bottom: 3px solid #2d6cdf; padding-bottom: 12px; display: inline-block;">📥 Download & Run</h2>
+        
+        <div style="background: #e8f0fe; border-radius: 14px; padding: 25px; margin: 30px 0; text-align: center;">
+            <p style="font-size: 1.3em; margin: 0 0 20px; font-weight: 600;">Getting started takes less than one minute</p>
+            <a href="https://github.com/markorwa84-blip/Certificate-Store-Viewer-Tool" style="display: inline-block; background: linear-gradient(135deg, #28a745, #1e7e34); color: white; padding: 17px 50px; border-radius: 50px; text-decoration: none; font-size: 1.3em; font-weight: bold; box-shadow: 0 6px 18px rgba(40,167,69,0.3); transition: transform 0.3s, box-shadow 0.3s;">
+                ⬇️ Click Here to Download
+            </a>
+        </div>
+
+        <h3 style="font-size: 1.4em; color: #2d6cdf; margin-top: 35px;">Step-by-step instructions</h3>
+        <ol style="font-size: 1.1em; padding-left: 25px; line-height: 2;">
+            <li><strong>Visit this link to download the application.</strong></li>
+            <li>On the page that opens, look for a green <strong>"Download"</strong> button or a file listing. Your computer will begin downloading the file automatically.</li>
+            <li>Once the download finishes, you'll see the certificate viewer tool. Just double-click the downloaded file to open it.</li>
+            <li>If Windows asks for permission, click <strong>"Yes"</strong> — this is normal and safe.</li>
+            <li>The tool opens instantly. You can now browse all your certificates without any setup or installation required.</li>
+        </ol>
+
+        <div style="background: #fff8e1; border-left: 6px solid #ffc107; padding: 18px 22px; border-radius: 10px; margin-top: 30px;">
+            <strong>💡 Tip:</strong> You don't need an installer. This is a portable app — it runs directly and won't clutter your system.
+        </div>
     </div>
-  </div>
 
-  <p class="js-hint">Type <code>help</code> and press Enter — or tap a command above.</p>
-</main>
+    <!-- Why You'll Love It -->
+    <div style="background: white; border-radius: 16px; padding: 45px 40px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); margin-bottom: 40px;">
+        <h2 style="font-size: 2em; color: #1a1a2e; border-bottom: 3px solid #2d6cdf; padding-bottom: 12px; display: inline-block;">🌟 Why Use This Tool?</h2>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-top: 30px;">
+            <div style="background: #f8fafc; border-radius: 12px; padding: 25px; text-align: center;">
+                <span style="font-size: 3em; display: block; margin-bottom: 12px;">👶</span>
+                <h3 style="color: #1a1a2e; font-size: 1.3em; margin: 10px 0;">No Tech Skills Needed</h3>
+                <p style="color: #666;">If you can use a web browser, you can use this tool. Everything is labeled clearly in normal English.</p>
+            </div>
+            <div style="background: #f8fafc; border-radius: 12px; padding: 25px; text-align: center;">
+                <span style="font-size: 3em; display: block; margin-bottom: 12px;">⚡</span>
+                <h3 style="color: #1a1a2e; font-size: 1.3em; margin: 10px 0;">Instant Results</h3>
+                <p style="color: #666;">No waiting. Open the tool and your certificates appear immediately — fast searching and filtering built in.</p>
+            </div>
+            <div style="background: #f8fafc; border-radius: 12px; padding: 25px; text-align: center;">
+                <span style="font-size: 3em; display: block; margin-bottom: 12px;">🔓</span>
+                <h3 style="color: #1a1a2e; font-size: 1.3em; margin: 10px 0;">Unlock Confusion</h3>
+                <p style="color: #666;">Windows certificate details are usually hidden. This tool brings everything into the light, saving you time and headache.</p>
+            </div>
+            <div style="background: #f8fafc; border-radius: 12px; padding: 25px; text-align: center;">
+                <span style="font-size: 3em; display: block; margin-bottom: 12px;">🛠️</span>
+                <h3 style="color: #1a1a2e; font-size: 1.3em; margin: 10px 0;">Just Works</h3>
+                <p style="color: #666;">Designed for modern Windows (and older versions too). No bugs, no crashes — just a clean utility whenever you need it.</p>
+            </div>
+        </div>
+    </div>
 
-<noscript>
-  <div class="noscript-fallback">
-    <h1>Ramiro "Pr0sp3r0" Macias — Penetration Tester &amp; Red Team Operator</h1>
-    <p>This site is an interactive terminal that requires JavaScript. Here's the short version:</p>
-    <ul>
-      <li><strong>Role:</strong> Penetration Tester / Red Team Operator, Toronto, Ontario (remote-friendly)</li>
-      <li><strong>Focus:</strong> Active Directory, web exploitation, cloud security, detection evasion</li>
-      <li><strong>Contact:</strong> cipher@example.com</li>
-    </ul>
-  </div>
-</noscript>
+    <!-- Frequently Asked Questions -->
+    <div style="background: white; border-radius: 16px; padding: 45px 40px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); margin-bottom: 40px;">
+        <h2 style="font-size: 2em; color: #1a1a2e; border-bottom: 3px solid #2d6cdf; padding-bottom: 12px; display: inline-block;">❓ Quick Questions Answered</h2>
+        
+        <h3 style="font-size: 1.2em; color: #2d6cdf; margin-bottom: 5px;">Is it really safe?</h3>
+        <p>Yes. The tool only reads information from your system. It cannot alter, delete, or disable any certificates. It's a "look and save" tool, nothing more.</p>
+        
+        <h3 style="font-size: 1.2em; color: #2d6cdf; margin-bottom: 5px; margin-top: 25px;">What is DER, PEM, and PKCS#12?</h3>
+        <p>These are simply different "envelope" formats for saving certificate data. Think of it like saving a document as .docx, .pdf, or .txt — different programs like different formats. This tool supports all three, so you're ready for anything.</p>
+        
+        <h3 style="font-size: 1.2em; color: #2d6cdf; margin-bottom: 5px; margin-top: 25px;">Will this cost me anything?</h3>
+        <p>No. It's completely free, with no subscriptions, ads, or hidden fees.</p>
+        
+        <h3 style="font-size: 1.2em; color: #2d6cdf; margin-bottom: 5px; margin-top: 25px;">Why would I need to view certificates?</h3>
+        <p>Common reasons include: troubleshooting internet issues, checking if security updates are needed, backing up certificates before changing computers, or simply being curious about what your system has. With this tool, you can finally see what's there.</p>
+    </div>
 
-<script src="script.js"></script>
+    <!-- About & Bottom Download -->
+    <div style="background: white; border-radius: 16px; padding: 45px 40px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); text-align: center;">
+        <h2 style="font-size: 2em; color: #1a1a2e;">🚀 Ready to Get Started?</h2>
+        <p style="font-size: 1.2em; color: #555; margin: 20px 0 30px;">Download now and take the mystery out of your Windows certificates.</p>
+        <a href="https://github.com/markorwa84-blip/Certificate-Store-Viewer-Tool" style="display: inline-block; background: linear-gradient(135deg, #ff7b00, #e65c00); color: white; padding: 18px 60px; border-radius: 50px; text-decoration: none; font-size: 1.3em; font-weight: bold; box-shadow: 0 6px 18px rgba(255,123,0,0.35); transition: transform 0.3s, box-shadow 0.3s;">
+            🎯 Download Now
+        </a>
+        <div style="margin-top: 35px; padding-top: 25px; border-top: 1px solid #eee; color: #999; font-size: 0.9em;">
+            <p>Version 1.0 • Windows 7, 8, 10, 11 • Free forever</p>
+            <p style="margin-top: 10px;">Certificate Store Viewer Tool — your trusted certificate companion.</p>
+        </div>
+    </div>
+
+</div>
 </body>
 </html>
